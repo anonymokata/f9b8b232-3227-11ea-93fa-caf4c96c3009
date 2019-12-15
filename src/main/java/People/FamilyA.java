@@ -14,8 +14,11 @@ public class FamilyA {
  public int calculateRate(LocalDateTime dateTimeStart, LocalDateTime dateTimeEnd){
   if(dateTimeStart.isAfter(LocalDateTime.of(dateTimeStart.toLocalDate(),start))
   && dateTimeEnd.isBefore(LocalDateTime.of(dateTimeEnd.toLocalDate().plusDays(1),end))){
-   Integer range = dateTimeEnd.getHour() - dateTimeStart.getHour();
-   rate+=15;
+   int range = dateTimeEnd.getHour() - dateTimeStart.getHour();
+   for (int i = range; i != 0; i--) {
+    rate+=15;
+   }
+
   }
 return rate;
  }
