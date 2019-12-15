@@ -4,7 +4,7 @@ import java.time.Month;
 import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
-public class FamilyATest {
+public class FamilyTest {
 
   @Test
   public void PayRateTest(){
