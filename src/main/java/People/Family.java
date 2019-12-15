@@ -6,11 +6,11 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 import javafx.util.Pair;
 
-public class FamilyA {
+public class Family {
  LocalTime start, end;
  int rate = 0;
  LinkedList<Pair<Integer,Integer>> pivots;
- public FamilyA(){
+ public Family(){
  this.start = LocalTime.of(16,59);
  this.end = LocalTime.of(4,0);
   pivots = new LinkedList<>();
@@ -29,12 +29,13 @@ public class FamilyA {
 
         while(!pivots.isEmpty() && hours != 0) {
 
-          System.out.println(dateTimeStart);
+
           rate += pivots.getFirst().getValue();
           dateTimeStart = dateTimeStart.plusHours(1);
           if(dateTimeStart.getHour() == pivots.getFirst().getKey()){
             pivots.pop();
           }
+          System.out.println(dateTimeStart);
           hours--;
         }
 
