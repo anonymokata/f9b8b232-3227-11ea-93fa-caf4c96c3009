@@ -17,11 +17,11 @@ public class FamilyATest {
   }
   @Test
   public void PayRateTest1(){
-    FamilyA familyA = new FamilyA();
-    familyA.setPivot(new Pair<>(23,15));
-    familyA.setPivot(new Pair<>(4,20));
-    Assert.assertEquals(100,
-        familyA
+    FamilyA family = new FamilyA();
+    family.setPivot(new Pair<>(23,15));
+    family.setPivot(new Pair<>(4,20));
+    Assert.assertEquals(120,
+        family
             .calculateRate(LocalDateTime.of(2019, Month.AUGUST, 21, 19, 0),
                 LocalDateTime.of(2019, Month.AUGUST, 22, 2, 0)));
   }

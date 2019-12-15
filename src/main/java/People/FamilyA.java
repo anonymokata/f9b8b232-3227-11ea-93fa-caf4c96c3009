@@ -3,19 +3,17 @@ package People;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import javafx.util.Pair;
 
 public class FamilyA {
  LocalTime start, end;
  int rate = 0;
- List<Pair<Integer,Integer>> pivots;
+ LinkedList<Pair<Integer,Integer>> pivots;
  public FamilyA(){
  this.start = LocalTime.of(16,59);
  this.end = LocalTime.of(4,0);
-  pivots = new ArrayList<>();
+  pivots = new LinkedList<>();
  }
  public void setPivot(Pair<Integer,Integer> pair){
   pivots.add(pair);
@@ -27,15 +25,18 @@ public class FamilyA {
 
         Duration first = Duration.between(dateTimeStart,dateTimeEnd);
         int hours = first.toHoursPart();
+        System.out.println(hours);
 
-        for(Pair<Integer,Integer> pivot : pivots)
-        for (int start =dateTimeStart.getHour(); start != pivot.getKey(); start++) {
-          if(start == dateTimeEnd.getHour())
-            break;
-          System.out.println(start);
-          rate += 15;
+        while(!pivots.isEmpty() && hours != 0) {
+
+          System.out.println(dateTimeStart);
+          rate += pivots.getFirst().getValue();
+          dateTimeStart = dateTimeStart.plusHours(1);
+          if(dateTimeStart.getHour() == pivots.getFirst().getKey()){
+            pivots.pop();
+          }
+          hours--;
         }
-
 
       }
 
