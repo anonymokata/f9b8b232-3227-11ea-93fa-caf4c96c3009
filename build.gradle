@@ -9,7 +9,7 @@ test{
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.9
+sourceCompatibility = 8
 
 repositories {
     mavenCentral()
@@ -17,4 +17,5 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }

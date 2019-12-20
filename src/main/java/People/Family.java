@@ -4,18 +4,17 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
-import javafx.util.Pair;
-
+import org.apache.commons.lang3.tuple.ImmutablePair;
 public class Family {
  LocalTime start, end;
  int rate = 0;
- LinkedList<Pair<Integer,Integer>> pivots;
+ LinkedList<ImmutablePair<Integer,Integer>> pivots;
  public Family(){
  this.start = LocalTime.of(16,59);
  this.end = LocalTime.of(4,0);
   pivots = new LinkedList<>();
  }
- public void setPivot(Pair<Integer,Integer> pair){
+ public void setPivot(ImmutablePair<Integer,Integer> pair){
   pivots.add(pair);
   //System.out.println(pivot);
  }
@@ -24,7 +23,7 @@ public class Family {
         && dateTimeEnd.isBefore(LocalDateTime.of(dateTimeEnd.toLocalDate().plusDays(1), end))) {
 
         Duration first = Duration.between(dateTimeStart,dateTimeEnd);
-        int hours = first.toHoursPart();
+        int hours = Math.toIntExact(first.toHours());
         System.out.println(hours);
 
         while(!pivots.isEmpty() && hours != 0) {
