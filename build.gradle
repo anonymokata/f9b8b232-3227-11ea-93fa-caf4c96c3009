@@ -2,14 +2,23 @@ plugins {
     id 'java'
 }
 
-test{
-    useJUnit()
-}
-
+sourceCompatibility = 8
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 8
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Main-Class': 'main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+test{
+    useJUnit()
+}
 
 repositories {
     mavenCentral()
