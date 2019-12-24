@@ -16,7 +16,6 @@ public class Family {
  }
  public void setPivot(ImmutablePair<Integer,Integer> pair){
   pivots.add(pair);
-  //System.out.println(pivot);
  }
  public int calculateRate(LocalDateTime dateTimeStart, LocalDateTime dateTimeEnd){
     if (dateTimeStart.isAfter(LocalDateTime.of(dateTimeStart.toLocalDate(), start))
@@ -24,17 +23,14 @@ public class Family {
 
         Duration first = Duration.between(dateTimeStart,dateTimeEnd);
         int hours = Math.toIntExact(first.toHours());
-        System.out.println(hours);
 
         while(!pivots.isEmpty() && hours != 0) {
-
 
           rate += pivots.getFirst().getValue();
           dateTimeStart = dateTimeStart.plusHours(1);
           if(dateTimeStart.getHour() == pivots.getFirst().getKey()){
             pivots.pop();
           }
-          System.out.println(dateTimeStart);
           hours--;
         }
 
