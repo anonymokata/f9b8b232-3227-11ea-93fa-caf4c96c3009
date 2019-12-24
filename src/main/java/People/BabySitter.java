@@ -3,6 +3,7 @@ package People;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -50,7 +51,7 @@ family = new Family();
     reader = new BufferedReader(new InputStreamReader(System.in));
     String input = reader.readLine();
     LocalDateTime dateTimeStart = LocalDateTime.parse(input,dtf);
-    if(!dateTimeStart.isAfter(LocalDateTime.of(dateTimeStart.toLocalDate(),
+    if(!dateTimeStart.isAfter(LocalDateTime.of(LocalDate.now(),
         LocalTime.of(16,59)))){
       logger =Logger.getLogger("StartTimeError");
       logger.log(Level.SEVERE,"Must start at 17:00 or after");
@@ -61,8 +62,8 @@ family = new Family();
     reader = new BufferedReader(new InputStreamReader(System.in));
     input = reader.readLine();
     LocalDateTime dateTimeEnd = LocalDateTime.parse(input,dtf);
-    if(!dateTimeEnd.isBefore(LocalDateTime.of(dateTimeEnd.toLocalDate().plusDays(1),
-        LocalTime.of(4,0)))){
+    if (!dateTimeEnd.isBefore(
+        LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.of(4, 0)))) {
       logger = Logger.getLogger("EndTimeError");
       logger.log(Level.SEVERE,"Must end at 04:00 or before");
       throw new IOException("Invalid input");
