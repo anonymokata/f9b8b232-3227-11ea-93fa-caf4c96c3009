@@ -61,7 +61,7 @@ family = new Family();
     LocalDateTime dateTimeEnd = LocalDateTime.parse(input,dtf);
     if(!dateTimeEnd.isBefore(LocalDateTime.of(dateTimeEnd.toLocalDate().plusDays(1),
         LocalTime.of(4,0)))){
-      logger = Logger.getLogger("StartTimeError");
+      logger = Logger.getLogger("EndTimeError");
       logger.log(Level.SEVERE,"Must start at 04:00 or before");
     }
 
