@@ -39,6 +39,7 @@ family = new Family();
         family.setPivot(new ImmutablePair<>(0,8));
         family.setPivot(new ImmutablePair<>(4,16));
       }
+      default: throw new IOException("Invalid input");
     }
 
   }
@@ -53,6 +54,7 @@ family = new Family();
         LocalTime.of(16,59)))){
       logger =Logger.getLogger("StartTimeError");
       logger.log(Level.SEVERE,"Must start at 17:00 or after");
+      throw new IOException("Invalid input");
     }
 
     System.out.println("What is the time you want to stop working?\n Enter time as yyyy/MM/dd HH:mm");
@@ -63,6 +65,7 @@ family = new Family();
         LocalTime.of(4,0)))){
       logger = Logger.getLogger("EndTimeError");
       logger.log(Level.SEVERE,"Must start at 04:00 or before");
+      throw new IOException("Invalid input");
     }
 
    System.out.println("Your total compensation will be $"+ family.calculateRate(dateTimeStart,dateTimeEnd));
