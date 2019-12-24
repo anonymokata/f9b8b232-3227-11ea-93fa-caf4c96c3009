@@ -64,7 +64,7 @@ family = new Family();
     if(!dateTimeEnd.isBefore(LocalDateTime.of(dateTimeEnd.toLocalDate().plusDays(1),
         LocalTime.of(4,0)))){
       logger = Logger.getLogger("EndTimeError");
-      logger.log(Level.SEVERE,"Must start at 04:00 or before");
+      logger.log(Level.SEVERE,"Must end at 04:00 or before");
       throw new IOException("Invalid input");
     }
 
